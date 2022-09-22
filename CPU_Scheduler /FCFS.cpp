@@ -80,6 +80,6 @@ void FCFS::avg_time(std::vector<int> p)
     }
 
     //calculate the average
-    std::cout << "Average Time = " << total_wt / p.size() << "\n";
-    std::cout << "Average Turnaround_time = " << total_tat / p.size() << "\n";
+    std::cout << "Average Time = " << float(total_wt) / p.size() << "\n";
+    std::cout << "Average Turnaround_time = " << float(total_tat) / p.size() << "\n";
 }
