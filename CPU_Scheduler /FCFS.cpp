@@ -4,7 +4,10 @@
 #include<iostream>
 #include<vector>
 #include <iomanip> //formatting purposes
+
 //implementation of the FCFS scheduling using c++
+//range based for loop does not work..
+//TODO: implement FCFS p1...pn from Assignment
 
 class FCFS{
     //process
@@ -14,7 +17,8 @@ class FCFS{
 public:
     FCFS(){
         wait_t = {0};
-        burst_time = {5, 27, 3, 31, 5, 43, 4, 18, 6, 22, 4, 26, 3, 24, 4}; //representing our burst_time.
+        burst_time = {5,8,12};
+        //burst_time = {5, 27, 3, 31, 5, 43, 4, 18, 6, 22, 4, 26, 3, 24, 4}; //representing our burst_time.
         tat = {0};
     }
     //turnaround time
@@ -27,7 +31,7 @@ public:
 int main(){
     FCFS obj;
     //only using 1 processes for now
-    std::vector<int> process = {1,2,3,4,5,6,7,8};
+    std::vector<int> process = {1,2,3};
 //    std::vector<int> p1 = {5, 27, 3, 31, 5, 43, 4, 18, 6, 22, 4, 26, 3, 24, 4};
 //    std::vector<int> p2 = {4, 48, 5, 44, 7, 42, 12, 37, 9, 76, 4, 41, 9, 31, 7, 43, 8};
 //    std::vector<int> p3 = {8, 33, 12, 41, 18, 65, 14, 21, 4, 61, 15, 18, 14, 26, 5, 31, 6};
@@ -37,7 +41,7 @@ int main(){
 //    std::vector<int> p7 = {14, 46, 17, 41, 11, 42, 15, 21, 4, 32, 7, 19, 16, 33, 10};
 //    std::vector<int> p8 = {4, 14, 5, 33, 6, 51, 14, 73, 16, 87, 6};
 
-    std::cout << "FCFS Average Time";
+    std::cout << "FCFS Average Time: ";
     obj.avg_time(process);
 }
 
@@ -52,10 +56,12 @@ void FCFS::wait_time(std::vector<int> p)
 void FCFS::turnaround_time(std::vector<int> p)
 {
     //total amount time calculation by adding
-    for(auto i : p)
+    for(int i = 0; i < p.size(); i++)
         tat[i] = burst_time[i] + wait_t[i];
 }
 
+
+//calculation of the waiting goes as t1 = 0, t2....
 void FCFS::avg_time(std::vector<int> p)
 {
     int total_wt = 0, total_tat = 0;
@@ -65,12 +71,12 @@ void FCFS::avg_time(std::vector<int> p)
     turnaround_time(p);
     printf("\nProcesses    Burst   Waiting Time   Turn around \n");
 
-    for(auto i : p)
+    for(int i = 0; i < p.size(); i++)
     {
         total_wt += wait_t[i];
         total_tat += tat[i];
 
-      std::cout << std::setw(3) << i;
+      std::cout << std::setw(3) << i+1;
       std::cout << std::setw(13) << burst_time[i];
       std::cout << std::setw(10) << wait_t[i];
       std::cout << std::setw(15) << tat[i] << "\n";
@@ -78,7 +84,6 @@ void FCFS::avg_time(std::vector<int> p)
     }
 
     //calculate the average
-    total_wt / p.size();
-    std::cout << "Average Time = " << total_wt / p.size() << "\n";
-    std::cout << "Average Turnaround_time = " << total_tat / p.size() << "\n";
+    std::cout << "Average Time = " << float(total_wt) / p.size() << "\n";
+    std::cout << "Average Turnaround_time = " << float(total_tat) / p.size() << "\n";
 }
