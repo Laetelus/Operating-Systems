@@ -130,13 +130,13 @@ void Scheduler::FCFS()
     //get Tr average
     for(auto & i : complete)
     {
-        avgTw = avgTw + i.Tw;
-        avgTr = avgTr + i.Tr;
-        avgTtr = avgTtr + i.Ttr;
+        avgTw += i.Tw;
+        avgTr += i.Tr;
+        avgTtr += i.Ttr;
     }
-    avgTw = avgTw/processes;
-    avgTr = avgTr/processes;
-    avgTtr = avgTtr/processes;
+    avgTw /= processes;
+    avgTr /= processes;
+    avgTtr /= processes;
 
     cout << "First Come First Serve\nCPU Utilization: " << cpuu << "%\n";
     for(auto & i : complete)
@@ -146,13 +146,7 @@ void Scheduler::FCFS()
     cout << "Avg. Tw: " << avgTw << " | Avg. Ttr: " << avgTtr << " | Avg. Tr: " << avgTr;
 }
 
-//compcounter not working
-bool cmpCounter(Process x, Process y)
-{
-    return x.schedule[x.counter] > y.schedule[y.counter];
-}
-
-bool cmpProcess(Process x, Process y)
+bool cmpProcess(const Process& x, const Process& y)
 {
     return x.pid_num < y.pid_num;
 }

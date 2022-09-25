@@ -102,7 +102,7 @@ private:
 
 
 };
-bool cmpCounter(Process x, Process y);
-bool cmpProcess(Process x, Process y);
+
+bool cmpProcess(const Process& x, const Process& y);
 
 #endif //UNTITLED3_SCHEDULER_H
