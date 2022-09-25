@@ -4,21 +4,19 @@
 #include<string.h>
 
 using std::cout;
-
 int main() {
     Scheduler obj;
     obj.FCFS();
     return 0;
 }
 
-void Scheduler::FCFS(){
+void Scheduler::FCFS()
+{
 
     //loop while readyQueue or in_IO have elements
     while(!readyQueue.empty() || !in_io.empty()) {
         if (readyQueue.front().counter == 0 && readyQueue.front().Tr == -1)
-        {
             readyQueue.front().Tr = time;
-        }
 
         //Time increments first, other functionalities react to it
         time++;
@@ -28,7 +26,7 @@ void Scheduler::FCFS(){
         //Decrement CPUburst of currently running process at object's current counter
         //Operate only on front of readyQueue
         //If front of readyQueue's currently selected schedule is 0, swap IO state
-        if (readyQueue.size() > 0) {
+        if (!readyQueue.empty()) {
             //decay current CPU burst
             //increase Tw of everything else in queue
             //for loop only runs as long as
@@ -44,12 +42,12 @@ void Scheduler::FCFS(){
             //
         }
 
-        if (readyQueue.size() == 0) {
+        if (readyQueue.empty()) {
             cout << "CPU idle" << "\n";
         }
 
 
-        if (in_io.size() > 0) {
+        if (!in_io.empty()) {
             //decrement IO bursts of all Processes in in_io
             for (size_t i = 0; i < in_io.size(); i++) {
                 in_io[i].schedule[in_io[i].counter]--;
@@ -69,9 +67,8 @@ void Scheduler::FCFS(){
                 }
             }
 
-
             if (in_io.size() > 1) {
-                //nothing
+                 //nothing
             }
                 //cannot use push_back when there is only 1 element in vector
                 //use in_io clear instead
@@ -88,7 +85,7 @@ void Scheduler::FCFS(){
 
         //secondary check for after CPU bursts and IO bursts are decremented
         //only runs checks if there is something in readyQueue
-        if (readyQueue.size() > 0) {
+        if (!readyQueue.empty()) {
             //if CPU burst at front of queue is 0 (is finished)
             //and if it is not the last CPU burst of the schedule,
             //send to IO vector
@@ -112,23 +109,18 @@ void Scheduler::FCFS(){
             }
         }
 
-
-
-
         //output
         cout << "Ready Queue:    Process       Burst time" << "\n";
-        for (size_t i = 0; i < readyQueue.size(); i++) {
-            cout << "                            " << readyQueue[i].pid << "              "
-                 << readyQueue[i].schedule[readyQueue[i].counter] << "\n";
+        for (auto & i : readyQueue) {
+            cout << "                            " << i.pid << "              "
+                 << i.schedule[i.counter] << "\n";
         }
-
 
         cout << "List of Process I/O:  " << '\n';
         cout << "Process       I/O TImes" << '\n';
-        for(size_t i = 0; i < in_io.size(); i++) {
-            cout << "    " << in_io[i].pid << "            " << in_io[i].schedule[in_io[i].counter] << "\n";
+        for(auto & i : in_io) {
+            cout << "    " << i.pid << "            " << i.schedule[i.counter] << "\n";
         }
-
         cout << "\n\n";
     }
 
@@ -136,25 +128,25 @@ void Scheduler::FCFS(){
     sort(complete.begin(), complete.end(),cmpProcess);
 
     //get Tr average
-    for(size_t i = 0; i < complete.size(); i++)
+    for(auto & i : complete)
     {
-        avgTw = avgTw + complete[i].Tw;
-        avgTr = avgTr + complete[i].Tr;
-        avgTtr = avgTtr + complete[i].Ttr;
+        avgTw = avgTw + i.Tw;
+        avgTr = avgTr + i.Tr;
+        avgTtr = avgTtr + i.Ttr;
     }
     avgTw = avgTw/processes;
     avgTr = avgTr/processes;
     avgTtr = avgTtr/processes;
 
     cout << "First Come First Serve\nCPU Utilization: " << cpuu << "%\n";
-    for(size_t i = 0; i < complete.size(); i++)
+    for(auto & i : complete)
     {
-        cout << complete[i].pid << " Tw: " << complete[i].Tw << " Ttr: " << complete[i].Ttr << " Tr: " << complete[i].Tr << "\n";
+        cout << i.pid << " Tw: " << i.Tw << " Ttr: " << i.Ttr << " Tr: " << i.Tr << "\n";
     }
     cout << "Avg. Tw: " << avgTw << " | Avg. Ttr: " << avgTtr << " | Avg. Tr: " << avgTr;
 }
 
-//compcounter not working 
+//compcounter not working
 bool cmpCounter(Process x, Process y)
 {
     return x.schedule[x.counter] > y.schedule[y.counter];
