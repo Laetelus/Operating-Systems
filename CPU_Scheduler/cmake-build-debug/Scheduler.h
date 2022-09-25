@@ -23,7 +23,7 @@ struct Process{
 class Scheduler{
 public:
     Scheduler(){
-        
+
         time = 0; //total running time
         running_time = 0;
         cpuu = 0; //cpu utilization

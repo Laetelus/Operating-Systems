@@ -154,6 +154,7 @@ void Scheduler::FCFS(){
     cout << "Avg. Tw: " << avgTw << " | Avg. Ttr: " << avgTtr << " | Avg. Tr: " << avgTr;
 }
 
+//compcounter not working 
 bool cmpCounter(Process x, Process y)
 {
     return x.schedule[x.counter] > y.schedule[y.counter];
