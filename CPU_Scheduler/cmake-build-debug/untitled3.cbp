@@ -78,7 +78,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/angeloalies/Documents/Operating-Systems/CPU_Scheduler/cmake-build-debug/Scheduler.h">
+		<Unit filename="/Users/angeloalies/Documents/Operating-Systems/CPU_Scheduler/Scheduler.h">
 			<Option target="untitled3"/>
 		</Unit>
 		<Unit filename="/Users/angeloalies/Documents/Operating-Systems/CPU_Scheduler/main.cpp">

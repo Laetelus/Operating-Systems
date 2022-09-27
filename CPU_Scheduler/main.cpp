@@ -1,4 +1,4 @@
-#include "cmake-build-debug/Scheduler.h"
+#include "Scheduler.h"
 #include <iostream>
 #include <algorithm>
 using std::cout;
