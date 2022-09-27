@@ -6,11 +6,13 @@
 #define UNTITLED3_SCHEDULER_H
 
 #include <iostream>
-#include <deque>
+#include<vector>
 #include <algorithm>
 
+
 struct Process{
-   std::deque<int> schedule;
+
+    std::vector<int> schedule;
     unsigned int counter = 0; //tracking schedule's position
     unsigned int pid_num;
     unsigned int Tw = 0; // waiting time
@@ -95,11 +97,11 @@ private:
     double cpuu; //cpu utilization
     const int processes = 8;
 
-    std::deque<Process> readyQueue; //ready queue
-    std::deque<Process> in_io; //for IO state
-    std::deque<Process>::iterator it; //for in_IO removal
-    std::deque<Process> complete; //completed processes
-
+    //I used vectors,but can use other data structures.
+    std::vector<Process> readyQueue; //ready queue
+    std::vector<Process> in_io; //for IO state
+    std::vector<Process>::iterator it; //for in_IO removal
+    std::vector<Process> complete; //completed processes
 
 };
 

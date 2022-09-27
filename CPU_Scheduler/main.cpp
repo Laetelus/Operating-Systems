@@ -1,8 +1,6 @@
 #include "cmake-build-debug/Scheduler.h"
 #include <iostream>
 #include <algorithm>
-#include<string.h>
-
 using std::cout;
 int main() {
     Scheduler obj;
@@ -31,10 +29,13 @@ void Scheduler::FCFS()
             //increase Tw of everything else in queue
             //for loop only runs as long as
             //there is more than one element in readyQueue
+
+            //once it reaches each process iterates through the elements.
             cout << "Now Running:  " << readyQueue.front().pid << "\n";
             readyQueue.front().schedule[readyQueue.front().counter]--;
             running_time++;
 
+            //iterates through each process p1...p8
             for (unsigned int i = 1; i < readyQueue.size(); i++) {
                 readyQueue[i].Tw++;
             }
@@ -97,7 +98,7 @@ void Scheduler::FCFS()
                 in_io.push_back(readyQueue.front()); //send to IO vector
                 sort(in_io.begin(), in_io.end(), cmpProcess);
                 cout << readyQueue.front().pid << " CPU burst finished - sent to IO\n";
-                readyQueue.pop_front(); //pop front of readyQueue
+                readyQueue.erase(readyQueue.begin()); //pop front of readyQueue
 
             }
                 //else if the last CPU burst in element is now 0, end process entirely
@@ -105,7 +106,7 @@ void Scheduler::FCFS()
                 readyQueue.front().Ttr = time;
                 complete.push_back(readyQueue.front()); //push to 'complete'
                 cout << readyQueue.front().pid << " complete\n";
-                readyQueue.pop_front(); //pop front of readyQueue
+                readyQueue.erase(readyQueue.begin()); //pop front of readyQueue
             }
         }
 
