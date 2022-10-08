@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/angeloalies/Documents/Operating Systems/SJF/cmake-build-debug"
+			"value" : "/Users/angeloalies/Documents/Operating-Systems/SJF/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -515,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/angeloalies/Documents/Operating Systems/SJF"
+			"value" : "/Users/angeloalies/Documents/Operating-Systems/SJF"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1087,7 +1087,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/angeloalies/Documents/Operating Systems/SJF/cmake-build-debug"
+			"value" : "/Users/angeloalies/Documents/Operating-Systems/SJF/cmake-build-debug"
 		},
 		{
 			"name" : "SJF_IS_TOP_LEVEL",
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/angeloalies/Documents/Operating Systems/SJF"
+			"value" : "/Users/angeloalies/Documents/Operating-Systems/SJF"
 		}
 	],
 	"kind" : "cache",

@@ -92,7 +92,12 @@ public:
         temp.schedule.clear();
 
         //Begin Scheduler Calculations
-        //SJF(readyQueue); // acquiring bugs when enabled
+
+        if (readyQueue.empty()){ //memory never gets allocated
+            cout << "testing";
+            SJF(readyQueue); // acquiring bugs when enabled
+        }
+
 
         //loop while readyQueue or in_IO have elements
         while(!readyQueue.empty() || !in_io.empty())
