@@ -250,7 +250,6 @@ private:
     double cpuu; //cpu utilization
     const int processes = 8;
 
-    //I used vectors,but can use other data structures.
     std::deque<Process> readyQueue; //ready queue
     std::deque<Process> in_io; //for IO state
     std::deque<Process>::iterator it; //for in_IO removal
