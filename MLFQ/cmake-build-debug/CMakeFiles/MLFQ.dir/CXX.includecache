@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/angel/Downloads/MLFQ/MLFQ.cpp
+iostream
+-
+MLFQ.h
+C:/Users/angel/Downloads/MLFQ/MLFQ.h
+vector
+-
+bits/stdc++.h
+-
+
+C:/Users/angel/Downloads/MLFQ/MLFQ.h
+bits/stdc++.h
+-
+

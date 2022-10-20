@@ -1,0 +1,3 @@
+C:/Users/angel/Downloads/MLFQ/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/angel/Downloads/MLFQ/cmake-build-debug/CMakeFiles/MLFQ.dir
+C:/Users/angel/Downloads/MLFQ/cmake-build-debug/CMakeFiles/edit_cache.dir
