@@ -1,3 +1,1 @@
-"E:\CLion 2021.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\MLFQ.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\MLFQ.dir/objects.a @CMakeFiles\MLFQ.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\MLFQ.dir/objects.a -Wl,--no-whole-archive -o MLFQ.exe -Wl,--out-implib,libMLFQ.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\MLFQ.dir\linklibs.rsp
+/Library/Developer/CommandLineTools/usr/bin/c++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/MLFQ.dir/MLFQ.cpp.o -o MLFQ 

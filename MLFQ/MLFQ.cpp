@@ -2,11 +2,13 @@
 // Created by Angelo Alies on 10/15/22.
 //
 #include <iostream>
-#include <utility>
 #include "MLFQ.h"
-#include <bits/stdc++.h>
-using namespace std;
+#include<queue>
+#include<vector>
+#include<iomanip>
+using std::cout;
 
+//TODO: (complete) expression result is never used. Investigate issue.
 int main() {
     __attribute__((unused)) Scheduler obj;
     return 0;
@@ -233,7 +235,8 @@ void Scheduler::printCompleteProcesses(vector<int> complete) {
     cout << setfill('-') << setw(40) << "-" << endl;
 }
 
-void Scheduler::printContextSwitchData(vector<vector<int>> processes, int process_index,queue<int> readyQueue,vector<int> processBurstIndex, int time) {
+void Scheduler::printContextSwitchData(vector<vector<int>> processes, int process_index,queue<int> readyQueue,vector<int> processBurstIndex, int time)
+{
 
     cout << setfill('-') << setw(40) << "-" << endl;
     cout << "Current Execution Time: " << time << endl << endl;

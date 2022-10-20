@@ -1,9 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/MLFQ.dir/MLFQ.cpp.obj"
-  "MLFQ.exe"
-  "MLFQ.exe.manifest"
+  "CMakeFiles/MLFQ.dir/MLFQ.cpp.o"
+  "CMakeFiles/MLFQ.dir/MLFQ.cpp.o.d"
+  "MLFQ"
   "MLFQ.pdb"
-  "libMLFQ.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

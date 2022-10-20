@@ -4,7 +4,8 @@
 
 #ifndef MLFQ_MLFQ_H
 #define MLFQ_MLFQ_H
-#include <bits/stdc++.h>
+#include<vector>
+#include<queue>
 using namespace std;
 
 
@@ -33,10 +34,10 @@ public:
         mlfq(processes, readyQueueRR1, processBurstIndex);
     }
 
-    void mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vector<int> processBurstIndex);
-    void printCompleteProcesses(vector<int> complete);
-    void printQueue(queue<int> q, vector<vector<int>> processes,vector<int> processBurstIndex);
-    void printContextSwitchData(vector<vector<int>> processes, int process_index,queue<int> readyQueue,vector<int> processBurstIndex, int time);
+    void mlfq(vector<vector<int>>, queue<int>,vector<int>);
+    void printCompleteProcesses(vector<int>);
+    void printQueue(queue<int> q, vector<vector<int>>,vector<int>);
+    void printContextSwitchData(vector<vector<int>>, int,queue<int>,vector<int>,int);
 
 private:
     double time = 0;
