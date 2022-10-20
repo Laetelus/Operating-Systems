@@ -1,5 +1,5 @@
 //
-// Created by angel on 10/19/2022.
+// Created by Angelo on 10/15/2022.
 //
 
 #ifndef MLFQ_MLFQ_H
@@ -16,10 +16,7 @@ public:
 
     Scheduler(){
         vector<vector<int>> processes(numProcesses);
-        // queue <int> readyQueueFCFS;
         queue<int> readyQueueRR1;
-        // priority_queue< pair<int,int>, vector<pair<int,int>>,
-        // greater<pair<int,int>> > readyQueueSJF;
         vector<int> processBurstIndex(numProcesses, 0);
         processes[0] = {5, 27, 3, 31, 5, 43, 4, 18, 6, 22, 4, 26, 3, 24, 4};
         processes[1] = {4, 48, 5, 44, 7, 42, 12, 37, 9, 76, 4, 41, 9, 31, 7, 43, 8};
