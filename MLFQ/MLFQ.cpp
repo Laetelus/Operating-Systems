@@ -2,37 +2,17 @@
 // Created by Angelo Alies on 10/15/22.
 //
 #include <iostream>
+#include <utility>
 #include "MLFQ.h"
 #include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-    Scheduler obj;
-    int numProcesses = 8;
-    vector<vector<int>> processes(numProcesses);
-    // queue <int> readyQueueFCFS;
-    queue<int> readyQueueRR1;
-    // priority_queue< pair<int,int>, vector<pair<int,int>>,
-    // greater<pair<int,int>> > readyQueueSJF;
-    vector<int> processBurstIndex(numProcesses, 0);
-    processes[0] = {5, 27, 3, 31, 5, 43, 4, 18, 6, 22, 4, 26, 3, 24, 4};
-    processes[1] = {4, 48, 5, 44, 7, 42, 12, 37, 9, 76, 4, 41, 9, 31, 7, 43, 8};
-    processes[2] = {8, 33, 12, 41, 18, 65, 14, 21, 4, 61, 15, 18, 14, 26, 5, 31, 6};
-    processes[3] = {3, 35, 4, 41, 5, 45, 3, 51, 4, 61, 5, 54, 6, 82, 5, 77, 3};
-    processes[4] = {16, 24, 17, 21, 5, 36, 16, 26, 7, 31, 13, 28, 11, 21, 6, 13, 3, 11, 4};
-    processes[5] = {11, 22, 4, 8, 5, 10, 6, 12, 7, 14, 9, 18, 12, 24, 15, 30, 8};
-    processes[6] = {14, 46, 17, 41, 11, 42, 15, 21, 4, 32, 7, 19, 16, 33, 10};
-    processes[7] = {4, 14, 5, 33, 6, 51, 14, 73, 16, 87, 6};
-
-    for (int i = 0; i < processes.size(); i++) readyQueueRR1.push(i);
-
-    cout << endl << "----MLFQ----" << endl;
-    obj.mlfq(processes, readyQueueRR1, processBurstIndex);
+    __attribute__((unused)) Scheduler obj;
     return 0;
 }
 
 void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vector<int> processBurstIndex) {
-    int numProcesses = processes.size();
     vector<int> queue_level(numProcesses, 1);
     vector<int> arrivalTime(processes.size(), 0);
     vector<int> waitingTime(processes.size(), 0);
@@ -41,7 +21,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
     vector<pair<int, int>> ioreturn;
     queue<int> readyQueueRR2;
     queue<int> readyQueueFCFS3;
-    vector<int> complete(numProcesses, 0);
+    vector<int> complete(processes.size(), 0);
 
     for (int i = 0; i < processes.size(); i++) {
         ioreturn.emplace_back(INT_MAX, i);
@@ -77,7 +57,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
                     processes[process_index].size() - 3) {
                     for (int i = 0; i < processes.size(); i++) {
                         if (ioreturn[i].second == process_index) {
-                            ioreturn[i].first =processes[process_index][processBurstIndex[process_index] + 1] +
+                            ioreturn[i].first = processes[process_index][processBurstIndex[process_index] + 1] +
                                                time;
                             break;
                         }
@@ -196,7 +176,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
     cout << "TW" << endl;
     int twt = 0;
     for (int i = 0; i < processes.size(); i++) {
-        cout << "P: " << i << " Waiting Time " << waitingTime[i] << endl;
+        cout << "P: " << i + 1 << ", Waiting Time " << waitingTime[i] << endl;
 
         twt += waitingTime[i];
     }
@@ -207,7 +187,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
     cout << "TTR" << endl;
     int ttat = 0;
     for (int i = 0; i < processes.size(); i++) {
-        cout << "P: " << i << ", Turnaround Time: " << tat[i] << endl;
+        cout << "P: " << i + 1 << ", Turnaround Time: " << tat[i] << endl;
         ttat += tat[i];
     }
     cout << "Average Turnaround Time: " << (float)ttat / processes.size() << endl
@@ -218,7 +198,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
     cout << "TR" << endl;
     int trt = 0;
     for (int i = 0; i < processes.size(); i++) {
-        cout << "P: " << i << ", Response Time: " << responseTime[i] << endl;
+        cout << "P: " << i + 1 << ", Response Time: " << responseTime[i] << endl;
         trt += responseTime[i];
     }
     cout << "Average Response Time : " << (float)trt / processes.size() << endl;
@@ -260,6 +240,6 @@ void Scheduler::printContextSwitchData(vector<vector<int>> processes, int proces
     cout << "Next Process on the CPU: P" << process_index << endl;
     cout << setfill('-') << setw(40) << "-" << endl << endl;
     cout << "Ready queue:" << endl;
-    printQueue(readyQueue, processes, processBurstIndex);
+    printQueue(std::move(readyQueue), std::move(processes), std::move(processBurstIndex));
     cout << setfill('-') << setw(40) << "-" << endl;
 }

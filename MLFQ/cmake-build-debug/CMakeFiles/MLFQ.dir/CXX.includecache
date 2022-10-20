@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/angel/Downloads/MLFQ/MLFQ.cpp
+C:/Users/angel/Documents/Operating-Systems/MLFQ/MLFQ.cpp
 iostream
 -
-MLFQ.h
-C:/Users/angel/Downloads/MLFQ/MLFQ.h
-vector
+utility
 -
+MLFQ.h
+C:/Users/angel/Documents/Operating-Systems/MLFQ/MLFQ.h
 bits/stdc++.h
 -
 
-C:/Users/angel/Downloads/MLFQ/MLFQ.h
+C:/Users/angel/Documents/Operating-Systems/MLFQ/MLFQ.h
 bits/stdc++.h
 -
 
