@@ -4,7 +4,6 @@
 
 #include "SJF.h"
 #include<iostream>
-#include<vector>
 #include<deque>
 #include <algorithm>
 using std::cout;

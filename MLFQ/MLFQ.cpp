@@ -116,7 +116,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
             printContextSwitchData(processes, process_index, readyQueueFCFS3,
                                    processBurstIndex, time);
             time += processes[process_index]
-            [processBurstIndex[process_index]]; // processgetting cpu
+            [processBurstIndex[process_index]]; // process getting cpu
             // burst time
 
             if (processBurstIndex[process_index] <=
