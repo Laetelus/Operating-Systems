@@ -46,10 +46,10 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
                     [processBurstIndex[process_index]]; // process getting cpu
             // burst time
             printContextSwitchData(processes, process_index, readyQueueRR1,processBurstIndex, time);
-            if (localBurstTime > tqrq1) { // tq expired
-                time += tqrq1;
+            if (localBurstTime > TQ_RR1) { // tq expired
+                time += TQ_RR1;
                 processes[process_index][processBurstIndex[process_index]] =
-                        localBurstTime - tqrq1;
+                        localBurstTime - TQ_RR1;
                 readyQueueRR2.push(process_index);
                 queue_level[process_index] = 2;
                 arrivalTime[process_index] = time;
@@ -81,10 +81,10 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
                     [processBurstIndex[process_index]]; // process getting cpu
             // burst time
             printContextSwitchData(processes, process_index, readyQueueRR2,processBurstIndex, time);
-            if (localBurstTime > tqrq2) { // tq expired
-                time += tqrq2;
+            if (localBurstTime > TQ_RR2) { // tq expired
+                time += TQ_RR2;
                 processes[process_index][processBurstIndex[process_index]] =
-                        localBurstTime - tqrq2;
+                        localBurstTime - TQ_RR2;
                 readyQueueFCFS3.push(process_index);
                 queue_level[process_index] = 3;
                 arrivalTime[process_index] = time;

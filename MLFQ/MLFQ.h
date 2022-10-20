@@ -8,13 +8,10 @@
 #include<queue>
 using namespace std;
 
-
-
 class Scheduler{
 public:
 
     const int numProcesses = 8;
-
     Scheduler(){
         vector<vector<int>> processes(numProcesses);
         queue<int> readyQueueRR1;
@@ -30,7 +27,7 @@ public:
 
         for (int i = 0; i < processes.size(); i++) readyQueueRR1.push(i);
 
-        cout << endl << "----MLFQ----" << endl;
+        cout << "\n" << "----MLFQ----" << "\n";
         mlfq(processes, readyQueueRR1, processBurstIndex);
     }
 
@@ -42,6 +39,6 @@ public:
 private:
     double time = 0;
     double idle_Cpu_Time = 0;
-    int tqrq1 = 5, tqrq2 = 10;
+    int TQ_RR1 = 5, TQ_RR2 = 10;
 };
 #endif //MLFQ_MLFQ_H
