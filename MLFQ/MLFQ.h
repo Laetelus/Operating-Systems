@@ -32,8 +32,7 @@ public:
     }
 
     void mlfq(vector<vector<int>>, queue<int>,vector<int>);
-    void printCompleteProcesses(vector<int>);
-    void printQueue(queue<int> q, vector<vector<int>>,vector<int>);
+    void printQueue(queue<int>, vector<vector<int>>,vector<int>);
     void printContextSwitchData(vector<vector<int>>, int,queue<int>,vector<int>,int);
 
 private:

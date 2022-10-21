@@ -67,7 +67,6 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
                 } else {
                     complete[process_index] = 1;
                 }
-                printCompleteProcesses(complete);
                 processBurstIndex[process_index] += 2;
             }
         } else if (!readyQueueRR2.empty()) {
@@ -104,7 +103,6 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
                 } else {
                     complete[process_index] = 1;
                 }
-                (complete);
                 processBurstIndex[process_index] += 2;
             }
         } else if (!readyQueueFCFS3.empty()) {
@@ -132,7 +130,6 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
             } else {
                 complete[process_index] = 1;
             }
-            printCompleteProcesses(complete);
             processBurstIndex[process_index] += 2;
         }
         sort(ioreturn.begin(), ioreturn.end());
@@ -162,7 +159,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
 
     int burst_time = time - idle_Cpu_Time;
 
-    for (int i = 0; i < processes.size(); i++) {
+    for (unsigned int i = 0; i < processes.size(); ++i) {
         int total_burst_time = 0;
         for (int j : processes[i]) {
             total_burst_time += j;
@@ -170,40 +167,26 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
         tat[i] += total_burst_time + waitingTime[i];
     }
 
-    cout<<  " RESULTS ";
-    cout << "Total time of 8 processes: " << time<< endl;
-    cout << "CPU Utilization: " << (float)burst_time / time * 100 << endl << endl;
-    cout << "_________________________________________________________ " << endl;
+    cout << "Multi Level Feedback Queue" << "\n";
+    cout << "Total time of "<< numProcesses << " processes: " << time << "\n";
+    cout << "CPU Utilization: " << (float)burst_time / time * 100 << "\n";
+    cout << "__________________________________________________ " << "\n";
 
-    cout << "TW" << endl;
-    int twt = 0;
-    for (int i = 0; i < processes.size(); i++) {
-        cout << "P: " << i + 1 << ", Waiting Time " << waitingTime[i] << endl;
+    int twt = 0, ttat = 0, trt = 0;
 
+    for(unsigned int i = 0; i < processes.size(); ++i)
+    {
+        cout << "P" << i + 1;
+        cout << " Tw: " << waitingTime[i] << "   Ttr: " << tat[i] << "   Tr: " << responseTime[i] << "\n";
         twt += waitingTime[i];
-    }
-    cout << "Average Waiting Time: " << (float)twt / processes.size() << endl<< endl;
-    cout << "_________________________________________________________ " << endl<<endl;
-
-
-    cout << "TTR" << endl;
-    int ttat = 0;
-    for (int i = 0; i < processes.size(); i++) {
-        cout << "P: " << i + 1 << ", Turnaround Time: " << tat[i] << endl;
         ttat += tat[i];
-    }
-    cout << "Average Turnaround Time: " << (float)ttat / processes.size() << endl
-         << endl;
-    cout << "_________________________________________________________ " << endl<<endl;
-
-
-    cout << "TR" << endl;
-    int trt = 0;
-    for (int i = 0; i < processes.size(); i++) {
-        cout << "P: " << i + 1 << ", Response Time: " << responseTime[i] << endl;
         trt += responseTime[i];
     }
-    cout << "Average Response Time : " << (float)trt / processes.size() << endl;
+    cout << "__________________________________________________ " << "\n";
+    cout << "Avg Tw: " << (float)twt / processes.size();
+    cout << " | Avg Ttr: " << (float)ttat / processes.size();
+    cout << " | Avg Tr: " << (float)trt / processes.size();
+
 }
 
 // function to print the queue
@@ -224,16 +207,6 @@ void Scheduler::printQueue(queue<int> q, vector<vector<int>> processes,
     cout << endl;
 }
 
-void Scheduler::printCompleteProcesses(vector<int> complete) {
-    cout << "Complete Processes: ";
-    for (int i = 0; i < complete.size(); i++) {
-        if (complete[i] == 1) {
-            cout << "P" << i + 1 << " ";
-        }
-    }
-    cout << endl;
-    cout << setfill('-') << setw(40) << "-" << endl;
-}
 
 void Scheduler::printContextSwitchData(vector<vector<int>> processes, int process_index,queue<int> readyQueue,vector<int> processBurstIndex, int time)
 {

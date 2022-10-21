@@ -28,6 +28,7 @@ bool cmpProcess(const Process& x, const Process& y);
 
 class Scheduler{
 public:
+    const int processes = 8;
     Scheduler() {
 
         time = 0; //total running time
@@ -253,7 +254,6 @@ private:
     double time; //total running time
     double running_time;
     double cpuu; //cpu utilization
-    const int processes = 8;
 
     std::deque<Process> readyQueue; //ready queue
     std::deque<Process> in_io; //for IO state

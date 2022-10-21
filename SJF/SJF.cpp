@@ -52,20 +52,21 @@ void Scheduler::print_SJF(){
     sort(complete.begin(), complete.end(),cmpProcess);
 
     //get Tr average
-    for(unsigned int i = 0; i < complete.size(); i++)
+    for(auto & i : complete)
     {
-        avgTw = avgTw + complete[i].Tw;
-        avgTr = avgTr + complete[i].Tr;
-        avgTtr = avgTtr + complete[i].Ttr;
+        avgTw = avgTw + i.Tw;
+        avgTr = avgTr + i.Tr;
+        avgTtr = avgTtr + i.Ttr;
     }
     avgTw = avgTw/processes;
     avgTr = avgTr/processes;
     avgTtr = avgTtr/processes;
 
+    cout << "total time for all " << processes <<  " processes is " << time << "\n";
     cout << "Short Jobs First\nCPU Utilization: " << cpuu << "%\n";
-    for(unsigned int i = 0; i < complete.size(); i++)
+    for(auto & i : complete)
     {
-        cout << complete[i].pid << " Tw: " << complete[i].Tw << " Ttr: " << complete[i].Ttr << " Tr: " << complete[i].Tr << '\n';
+        cout << i.pid << " Tw: " << i.Tw << " Ttr: " << i.Ttr << " Tr: " << i.Tr << '\n';
     }
     cout << "Avg. Tw: " << avgTw << " | Avg. Ttr: " << avgTtr << " | Avg. Tr: " << avgTr;
 }
