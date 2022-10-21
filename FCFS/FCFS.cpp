@@ -29,6 +29,7 @@ void Scheduler::FCFS()
     avgTr /= processes;
     avgTtr /= processes;
 
+    cout << "Total time of " << processes << " processes is " << time << "\n";
     cout << "First Come First Serve\nCPU Utilization: " << cpuu << "%\n";
     for(auto & i : complete)
     {

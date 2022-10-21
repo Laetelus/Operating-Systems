@@ -182,6 +182,7 @@ void Scheduler::mlfq(vector<vector<int>> processes, queue<int> readyQueueRR1,vec
         ttat += tat[i];
         trt += responseTime[i];
     }
+
     cout << "__________________________________________________ " << "\n";
     cout << "Avg Tw: " << (float)twt / processes.size();
     cout << " | Avg Ttr: " << (float)ttat / processes.size();
@@ -210,7 +211,6 @@ void Scheduler::printQueue(queue<int> q, vector<vector<int>> processes,
 
 void Scheduler::printContextSwitchData(vector<vector<int>> processes, int process_index,queue<int> readyQueue,vector<int> processBurstIndex, int time)
 {
-
     cout << setfill('-') << setw(40) << "-" << endl;
     cout << "Current Execution Time: " << time << endl << endl;
     cout << "Next Process on the CPU: P" << process_index << endl;
