@@ -10,7 +10,7 @@ using std::cout;
 
 //TODO: (complete) expression result is never used. Investigate issue.
 int main() {
-    __attribute__((unused)) Scheduler obj;
+    Scheduler obj; // Constructor used to call all processes and mlfq
     return 0;
 }
 
